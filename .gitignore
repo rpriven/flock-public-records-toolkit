@@ -1,0 +1,60 @@
+# Generated request files
+foia_request_*.txt
+flock_request_*.txt
+
+# Node modules (if anyone adds dependencies)
+node_modules/
+.pnpm-store/
+
+# Environment variables (shouldn't be here, but just in case)
+.env
+.env.local
+.env.production
+.env.development
+
+# Personal information
+personal_info.json
+my_request.txt
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build outputs
+dist/
+build/
+*.js.map
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Backup files
+*.bak
+*.backup
+*_backup
+
+# Documentation (local only)
+SECURITY-AUDIT-SUMMARY.md
+RELATIONSHIP-TO-ROSSMANN-GUIDE.md
