@@ -69,16 +69,17 @@ We're building a simple web-based version that works in any browser - no install
 
 ---
 
-## 🚨 Critical Issues with Original Template
+## 💡 Why We Built This
 
-The original template had several legal errors that could undermine requests:
+The original community template was a great starting point, but we identified opportunities to improve accuracy and accessibility:
 
-❌ **Incorrect terminology**: States don't use "FOIA" - that's federal only
-❌ **Wrong statute citation**: Referenced non-existent statute
-❌ **Incorrect response time**: Claimed universal 10-day deadline (varies by state)
-❌ **Missing 30-day urgency**: Flock deletes data after 30 days
+✅ **State-specific citations**: Each state has different laws and response timeframes
+✅ **Correct terminology**: Using proper names (not "FOIA" for state requests)
+✅ **Automation**: Interactive tools reduce manual work
+✅ **30-day urgency**: Highlighting Flock's automatic data deletion
+✅ **Multi-state support**: 20 states with accurate legal citations
 
-**Our tools fix all of these issues.**
+**This toolkit builds on community efforts to make public records requests more accessible and legally accurate.**
 
 ---
 
