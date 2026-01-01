@@ -12,7 +12,7 @@ Government surveillance systems should be transparent and accountable to the com
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/flock-public-records-toolkit
+git clone https://github.com/rpriven/flock-public-records-toolkit
 cd flock-public-records-tools
 
 # Quick lookup: What's my state's law?
