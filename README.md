@@ -35,7 +35,7 @@ If you're not comfortable with command-line tools:
 
 ### Coming Soon: Web App
 
-A standalone, browser-based version — **no download, no install**. Enter your city and state and it auto-fills a legally accurate Flock records request for you. (In progress.)
+A browser-based version — **no download, no install**. Pick your state and fill in the agency + your contact details; it builds a records request with the correct state legal citations and deadlines, ready to copy or download. **Runs entirely in your browser — your information is never sent, stored, or logged anywhere.** *(In progress.)*
 
 ---
 
