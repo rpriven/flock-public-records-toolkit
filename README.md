@@ -13,7 +13,7 @@ Government surveillance systems should be transparent and accountable to the com
 ```bash
 # Clone the repository
 git clone https://github.com/rpriven/flock-public-records-toolkit
-cd flock-public-records-tools
+cd flock-public-records-toolkit
 
 # Quick lookup: What's my state's law?
 bun lookup-state-law.ts CO
@@ -33,9 +33,9 @@ If you're not comfortable with command-line tools:
 3. Copy the template and fill in your information
 4. Send to your local agency
 
-### Coming Soon: Web Form
+### Coming Soon: Web App
 
-We're building a simple web-based version that works in any browser - no installation needed!
+A standalone, browser-based version — **no download, no install**. Enter your city and state and it auto-fills a legally accurate Flock records request for you. (In progress.)
 
 ---
 
