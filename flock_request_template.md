@@ -17,31 +17,31 @@ This is a non-commercial public records request made pursuant to [Your State's P
 
 I am requesting all records related to [Agency Name]'s relationship with Flock Group, Inc. (aka Flock Safety), including:
 
-1. **Contracts & Agreements**: All contracts, amendments, intergovernmental agreements, and related documents between [Agency Name] and Flock Safety or any third parties regarding Flock products/services
+1. Contracts & Agreements: All contracts, amendments, intergovernmental agreements, and related documents between [Agency Name] and Flock Safety or any third parties regarding Flock products/services
 
-2. **Financial Records**: Purchase orders, invoices, billing records, budgets, RFPs, bid responses, cost-benefit analyses, and funding sources (including grants)
+2. Financial Records: Purchase orders, invoices, billing records, budgets, RFPs, bid responses, cost-benefit analyses, and funding sources (including grants)
 
-3. **Policies & Procedures**: All policies, guidelines, procedures, or protocols (draft or final) regarding installation, operation, monitoring, data retention, data access, data sharing, or deletion
+3. Policies & Procedures: All policies, guidelines, procedures, or protocols (draft or final) regarding installation, operation, monitoring, data retention, data access, data sharing, or deletion
 
-4. **Data Access Records**: Logs of all access requests (internal and external), data-sharing agreements, audit logs, and requests fulfilled or denied
+4. Data Access Records: Logs of all access requests (internal and external), data-sharing agreements, audit logs, and requests fulfilled or denied
 
-5. **Meeting Records**: Minutes, agendas, notes, and presentations from meetings where Flock cameras or services were discussed
+5. Meeting Records: Minutes, agendas, notes, and presentations from meetings where Flock cameras or services were discussed
 
-6. **Legal & Compliance**: Legal opinions, risk assessments, privacy impact assessments, compliance reviews, and related correspondence
+6. Legal & Compliance: Legal opinions, risk assessments, privacy impact assessments, compliance reviews, and related correspondence
 
-7. **Technical Documentation**: System specifications, cybersecurity measures, data storage locations, interoperability documentation, and breach notifications
+7. Technical Documentation: System specifications, cybersecurity measures, data storage locations, interoperability documentation, and breach notifications
 
-8. **Data Retention**: Policies on retention timeframes, deletion procedures, and actual deletion logs
+8. Data Retention: Policies on retention timeframes, deletion procedures, and actual deletion logs
 
-9. **Training Materials**: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
+9. Training Materials: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
 
-10. **Network Sharing & External Access**: A list of all agencies and organizations with which [Agency Name] shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
+10. Network Sharing & External Access: A list of all agencies and organizations with which [Agency Name] shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
 
-11. **Search Audit Logs**: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for [date range — e.g., the most recent three complete months], including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
+11. Search Audit Logs: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for [date range — e.g., the most recent three complete months], including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
 
-12. **Federal & External Sharing Agreements**: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings
+12. Federal & External Sharing Agreements: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings
 
-⚠️ **TIME-SENSITIVE**: Due to Flock Safety's 30-day default data retention policy (shorter where state law requires — e.g., 21 days in Washington under SB 6002), I request expedited processing to preserve any relevant data that may be automatically deleted. Please preserve all records responsive to this request upon receipt.
+⚠️ TIME-SENSITIVE: Due to Flock Safety's 30-day default data retention policy (shorter where state law requires — e.g., 21 days in Washington under SB 6002), I request expedited processing to preserve any relevant data that may be automatically deleted. Please preserve all records responsive to this request upon receipt.
 
 Please provide records in their original electronic, machine-readable format (e.g., CSV or spreadsheet files) where applicable. Records maintained by Flock Safety on [Agency Name]'s behalf are responsive to this request in whatever format they are maintained. If any portions are denied, please provide a written explanation citing the specific legal exemption.
 

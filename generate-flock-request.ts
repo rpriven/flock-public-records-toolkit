@@ -242,17 +242,43 @@ function sanitizeLicensePlate(plate: string): string {
 }
 
 // Helper function to read input from user
-function prompt(question: string): Promise<string> {
-  return new Promise((resolve) => {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
+// Single shared interface with a line queue: per-question interfaces (and
+// bare rl.question with piped stdin) drop buffered lines, breaking scripted use
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-    rl.question(question, (answer) => {
-      rl.close();
-      resolve(answer.trim());
-    });
+const inputQueue: string[] = [];
+let pendingResolve: ((answer: string) => void) | null = null;
+
+rl.on('line', (line) => {
+  if (pendingResolve) {
+    const resolve = pendingResolve;
+    pendingResolve = null;
+    resolve(line.trim());
+  } else {
+    inputQueue.push(line);
+  }
+});
+
+rl.on('close', () => {
+  // EOF with a question outstanding: resolve empty so validation exits cleanly
+  if (pendingResolve) {
+    const resolve = pendingResolve;
+    pendingResolve = null;
+    resolve('');
+  }
+});
+
+function prompt(question: string): Promise<string> {
+  process.stdout.write(question);
+  return new Promise((resolve) => {
+    if (inputQueue.length > 0) {
+      resolve(inputQueue.shift()!.trim());
+    } else {
+      pendingResolve = resolve;
+    }
   });
 }
 
@@ -286,7 +312,7 @@ async function main() {
   if (!STATE_LAWS[stateCode as keyof typeof STATE_LAWS]) {
     console.error(`\n❌ Error: State code "${stateCode}" not found in database.`);
     console.error("Please add your state's information to the STATE_LAWS object in the script,");
-    console.error("or use the generic template in foia_request_streamlined.md\n");
+    console.error("or use the generic template in flock_request_template.md\n");
     process.exit(1);
   }
 
@@ -362,9 +388,10 @@ async function main() {
     }
 
     const vehicleDesc = sanitizeText(await prompt("Vehicle description (e.g., '2020 Honda Civic, blue'): "), 100);
-    const dateRange = sanitizeText(await prompt("Date range (e.g., 'January 1-15, 2025'): "), 50);
+    const dateRangeInput = sanitizeText(await prompt("Date range (press Enter for the recommended 'the 30 days preceding the processing of this request'): "), 80);
+    const dateRange = dateRangeInput || "the 30 days preceding the processing of this request";
 
-    vehicleInfo = `\n\n13. **Vehicle-Specific Request**: All images, footage, and associated data for license plate ${licensePlate} (${vehicleDesc}) for the period of ${dateRange}. This is a request for my own vehicle data.`;
+    vehicleInfo = `\n\n13. Vehicle-Specific Request: All images, footage, and associated data for license plate ${licensePlate} (${vehicleDesc}) for the period of ${dateRange}. This is a request for my own vehicle data.`;
   }
 
   const expedited = await prompt("Request expedited processing due to 30-day deletion? (y/n): ");
@@ -472,29 +499,29 @@ This is a non-commercial public records request made pursuant to the ${params.la
 
 I am requesting all records related to ${params.agencyName}'s relationship with Flock Group, Inc. (aka Flock Safety, including all subsidiaries), including:
 
-1. **Contracts & Agreements**: All contracts, amendments, intergovernmental agreements, and related documents between ${params.agencyName} and Flock Safety or any third parties regarding Flock products/services
+1. Contracts & Agreements: All contracts, amendments, intergovernmental agreements, and related documents between ${params.agencyName} and Flock Safety or any third parties regarding Flock products/services
 
-2. **Financial Records**: Purchase orders, invoices, billing records, budgets, RFPs, bid responses, cost-benefit analyses, and funding sources (including grants)
+2. Financial Records: Purchase orders, invoices, billing records, budgets, RFPs, bid responses, cost-benefit analyses, and funding sources (including grants)
 
-3. **Policies & Procedures**: All policies, guidelines, procedures, or protocols (draft or final) regarding installation, operation, monitoring, data retention, data access, data sharing, or deletion
+3. Policies & Procedures: All policies, guidelines, procedures, or protocols (draft or final) regarding installation, operation, monitoring, data retention, data access, data sharing, or deletion
 
-4. **Data Access Records**: Logs of all access requests (internal and external), data-sharing agreements, audit logs, and requests fulfilled or denied
+4. Data Access Records: Logs of all access requests (internal and external), data-sharing agreements, audit logs, and requests fulfilled or denied
 
-5. **Meeting Records**: Minutes, agendas, notes, and presentations from meetings where Flock cameras or services were discussed
+5. Meeting Records: Minutes, agendas, notes, and presentations from meetings where Flock cameras or services were discussed
 
-6. **Legal & Compliance**: Legal opinions, risk assessments, privacy impact assessments, compliance reviews, and related correspondence
+6. Legal & Compliance: Legal opinions, risk assessments, privacy impact assessments, compliance reviews, and related correspondence
 
-7. **Technical Documentation**: System specifications, cybersecurity measures, data storage locations, interoperability documentation, and breach notifications
+7. Technical Documentation: System specifications, cybersecurity measures, data storage locations, interoperability documentation, and breach notifications
 
-8. **Data Retention**: Policies on retention timeframes, deletion procedures, and actual deletion logs
+8. Data Retention: Policies on retention timeframes, deletion procedures, and actual deletion logs
 
-9. **Training Materials**: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
+9. Training Materials: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
 
-10. **Network Sharing & External Access**: A list of all agencies and organizations with which ${params.agencyName} shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
+10. Network Sharing & External Access: A list of all agencies and organizations with which ${params.agencyName} shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
 
-11. **Search Audit Logs**: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for the most recent three complete months, including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
+11. Search Audit Logs: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for the most recent three complete months, including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
 
-12. **Federal & External Sharing Agreements**: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings${params.vehicleInfo}${expeditedText}
+12. Federal & External Sharing Agreements: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings${params.vehicleInfo}${expeditedText}
 
 Please provide records in their original electronic, machine-readable format (e.g., CSV or spreadsheet files) where applicable. Records maintained by Flock Safety on ${params.agencyName}'s behalf are responsive to this request in whatever format they are maintained. Please preserve all records responsive to this request upon receipt. If any portions of this request are denied, please provide a written explanation citing the specific legal exemption claimed.
 
@@ -515,4 +542,4 @@ ${params.yourName}`;
 }
 
 // Run the script
-main().catch(console.error);
+main().catch(console.error).finally(() => rl.close());
