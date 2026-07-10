@@ -35,9 +35,15 @@ I am requesting all records related to [Agency Name]'s relationship with Flock G
 
 9. **Training Materials**: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
 
-⚠️ **TIME-SENSITIVE**: Due to Flock Safety's 30-day data retention policy, I request expedited processing to preserve any relevant data that may be automatically deleted.
+10. **Network Sharing & External Access**: A list of all agencies and organizations with which [Agency Name] shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
 
-Please provide records in electronic format if available. If any portions are denied, please provide a written explanation citing the specific legal exemption.
+11. **Search Audit Logs**: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for [date range — e.g., the most recent three complete months], including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
+
+12. **Federal & External Sharing Agreements**: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings
+
+⚠️ **TIME-SENSITIVE**: Due to Flock Safety's 30-day default data retention policy (shorter where state law requires — e.g., 21 days in Washington under SB 6002), I request expedited processing to preserve any relevant data that may be automatically deleted. Please preserve all records responsive to this request upon receipt.
+
+Please provide records in their original electronic, machine-readable format (e.g., CSV or spreadsheet files) where applicable. Records maintained by Flock Safety on [Agency Name]'s behalf are responsive to this request in whatever format they are maintained. If any portions are denied, please provide a written explanation citing the specific legal exemption.
 
 I request that you respond within [timeframe based on state law - e.g., "promptly as required by A.R.S. §39-121" or "10 business days as required by C.R.S. §24-72-203(3)(b)"].
 
@@ -74,7 +80,7 @@ All 20 supported states, with the law name and statute to cite in your request. 
 - New York — Freedom of Information Law (FOIL) (N.Y. Pub. Off. Law §87 et seq.) — acknowledgment within 5 days
 - Pennsylvania — Right-to-Know Law (65 Pa.C.S. §67.101 et seq.)
 - Virginia — Virginia FOIA (Va. Code §2.2-3700 et seq.)
-- Washington — Washington Public Records Act (RCW 42.56 et seq.)
+- Washington — Washington Public Records Act (RCW 42.56 et seq.) — note: WA also caps ALPR data *retention* at 21 days (SB 6002, 2026); the PRA's 5-business-day deadline is for an *initial response only* — actual production often takes longer, so ask for preservation up front
 
 **7 business days:**
 - Tennessee — Tennessee Public Records Act (Tenn. Code Ann. §10-7-503 et seq.)
@@ -101,7 +107,7 @@ All 20 supported states, with the law name and statute to cite in your request. 
 ## Important Notes
 
 ### Critical Timing Issue
-⏱️ **Flock Safety deletes all data after 30 days** on a rolling basis. If your request is delayed or denied initially, specific footage may be permanently deleted. Request expedited processing and follow up immediately.
+⏱️ **Flock Safety deletes all data after 30 days by default** on a rolling basis — and some states mandate less (Washington: 21 days under SB 6002). If your request is delayed or denied initially, specific footage may be permanently deleted. Request expedited processing and follow up immediately.
 
 ### What This Request Will Get You
 

@@ -364,7 +364,7 @@ async function main() {
     const vehicleDesc = sanitizeText(await prompt("Vehicle description (e.g., '2020 Honda Civic, blue'): "), 100);
     const dateRange = sanitizeText(await prompt("Date range (e.g., 'January 1-15, 2025'): "), 50);
 
-    vehicleInfo = `\n\n10. **Vehicle-Specific Request**: All images, footage, and associated data for license plate ${licensePlate} (${vehicleDesc}) for the period of ${dateRange}. This is a request for my own vehicle data.`;
+    vehicleInfo = `\n\n13. **Vehicle-Specific Request**: All images, footage, and associated data for license plate ${licensePlate} (${vehicleDesc}) for the period of ${dateRange}. This is a request for my own vehicle data.`;
   }
 
   const expedited = await prompt("Request expedited processing due to 30-day deletion? (y/n): ");
@@ -455,7 +455,7 @@ function generateLetter(params: {
 }): string {
   const expeditedText = params.expedited ? `
 
-⚠️ TIME-SENSITIVE REQUEST: Due to Flock Safety's 30-day rolling data deletion policy, I request expedited processing of this request to preserve any relevant data that may be automatically deleted during processing.` : '';
+⚠️ TIME-SENSITIVE REQUEST: Due to Flock Safety's 30-day default rolling data deletion policy (shorter where state law requires), I request expedited processing of this request to preserve any relevant data that may be automatically deleted during processing.` : '';
 
   // Note: All params have already been sanitized before reaching this function
   return `${params.date}
@@ -488,9 +488,15 @@ I am requesting all records related to ${params.agencyName}'s relationship with 
 
 8. **Data Retention**: Policies on retention timeframes, deletion procedures, and actual deletion logs
 
-9. **Training Materials**: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)${params.vehicleInfo}${expeditedText}
+9. **Training Materials**: Manuals, training materials, installation records, photographs, videos, and communications (emails, notes, etc.)
 
-Please provide records in electronic format if available. If any portions of this request are denied, please provide a written explanation citing the specific legal exemption claimed.
+10. **Network Sharing & External Access**: A list of all agencies and organizations with which ${params.agencyName} shares ALPR data or hot list information, and from which it receives them, including the Flock network share settings ("networks shared with me" and "networks I am sharing") and any exported list of shared networks
+
+11. **Search Audit Logs**: All search audit logs, reports, or exports — including but not limited to the Flock "Organization Audit," "Network Audit," and "Event Log" reports (or successor/equivalent reports) — for the most recent three complete months, including all available fields (searching user and organization, networks and devices searched, license plate, stated reason, case number, filters, and search date/time)
+
+12. **Federal & External Sharing Agreements**: All agreements, MOUs, pilot programs, or other arrangements granting any federal agency (including DHS, CBP, or ICE) or out-of-state agency access to ALPR data, and records showing the current status of any national lookup or federal sharing settings${params.vehicleInfo}${expeditedText}
+
+Please provide records in their original electronic, machine-readable format (e.g., CSV or spreadsheet files) where applicable. Records maintained by Flock Safety on ${params.agencyName}'s behalf are responsive to this request in whatever format they are maintained. Please preserve all records responsive to this request upon receipt. If any portions of this request are denied, please provide a written explanation citing the specific legal exemption claimed.
 
 I request that you respond ${params.responseTime}.
 

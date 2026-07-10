@@ -124,7 +124,7 @@ Currently supports **20 states** with accurate legal citations:
 
 ## ⏱️ Critical: 30-Day Data Deletion
 
-**Flock Safety automatically deletes all camera data after 30 days** on a rolling basis.
+**Flock Safety automatically deletes all camera data after 30 days by default** on a rolling basis — and some states now mandate less: Washington's Driver Privacy Act (SB 6002, effective March 2026) caps ALPR retention at **21 days**, so Washington requesters have even less time.
 
 **This means:**
 - You have ~30 days from when footage was captured to request it
@@ -145,6 +145,7 @@ Currently supports **20 states** with accurate legal citations:
 - **Meeting minutes** - Required to be public in most states
 - **Financial records** - How public money is spent
 - **Training materials** - Usually not exempt
+- **Network sharing & audit records** - Who outside your city can search your cameras, and who has (often produced with redactions — records like these exposed Denver's federal-sharing pilot)
 
 ### ⚠️ May Require Legal Challenge
 
@@ -159,12 +160,18 @@ Courts are increasingly ruling that Flock data is subject to public records laws
 - **Washington 2025**: Judge ordered police to release surveillance data
 - **General principle**: Public records law trumps vendor contracts
 
+### 💥 Proof of Impact: Denver 2026
+
+Public records requests don't just get documents — they change outcomes. In Colorado, journalists used records requests to uncover that Flock had given U.S. Border Patrol access to local camera data through a previously undisclosed pilot program — after the company publicly denied having federal contracts. The fallout: city council support collapsed, the City Auditor refused to countersign the contract, and in February 2026 Denver dropped Flock entirely ([9NEWS](https://www.9news.com/article/news/local/denver-removing-flock-cameras-new-axon-contract/73-640b5af3-7c87-4fea-8aa1-2510ad3257b8)).
+
+The records that exposed it are exactly the kind this toolkit's templates request — data-sharing and external-access records. Ask your town the same question.
+
 ---
 
 ## 💡 Tips for Success
 
 ### 1. **Act Quickly**
-Flock deletes data after 30 days. File your request ASAP and request expedited processing.
+Flock deletes data after 30 days by default — sooner where state law caps retention (Washington: 21 days). File your request ASAP and request expedited processing.
 
 ### 2. **Request Your Own Vehicle Data**
 If you want specific footage, request data about YOUR OWN vehicle. This has the strongest legal backing.
@@ -256,6 +263,10 @@ Filed a request using these tools? Let us know how it went! Success stories help
 
 ### Research & FOIA Tracking
 - **MuckRock** - FOIA tracking and examples: https://www.muckrock.com
+- **MuckRock's cloneable Flock request** (items 10-12 in our templates build on its proven wording): https://www.muckrock.com/foi/california-52/flock-safety-and-alpr-data-and-policies-200784/
+- **EFF Data Driven** - what 12M+ Flock search logs revealed: https://www.eff.org/pages/what-we-learned
+- **Have I Been Flocked** - Flock audit-log field reference: https://haveibeenflocked.com/about/audit-logs
+- **Rural Privacy Coalition** - request-filing guide: https://ruralprivacy.org/filing-public-info-requests
 - **DocumentCloud** - Document analysis and sharing
 - **National Freedom of Information Coalition**: https://www.nfoic.org/
 
