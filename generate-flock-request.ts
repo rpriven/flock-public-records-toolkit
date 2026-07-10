@@ -269,8 +269,8 @@ function getCurrentDate(): string {
 // Main interactive function
 async function main() {
   console.log("╔══════════════════════════════════════════════════════════════╗");
-  console.log("║  Flock Safety Public Records Request Generator              ║");
-  console.log("║  Generates state-specific public records requests           ║");
+  console.log("║  Flock Safety Public Records Request Generator               ║");
+  console.log("║  Generates state-specific public records requests            ║");
   console.log("║  (Security Hardened Version)                                 ║");
   console.log("╚══════════════════════════════════════════════════════════════╝\n");
 

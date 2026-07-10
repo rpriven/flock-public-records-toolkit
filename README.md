@@ -8,7 +8,21 @@ Government surveillance systems should be transparent and accountable to the com
 
 ## ⚡ Quick Start
 
+![Terminal output showing the Colorado public records law citation and ready-to-use request language](assets/demo.png)
+
 ### For Tech-Savvy Users (Command Line)
+
+The scripts run on [Bun](https://bun.sh), a free JavaScript/TypeScript runtime (it runs the `.ts` scripts directly, no build step) — one-line install:
+
+```bash
+# macOS / Linux
+curl -fsSL https://bun.sh/install | bash
+
+# Windows (PowerShell)
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+
+**No Bun? No problem** — skip down to the [copy-paste template](#for-everyone-copy-paste-template) below; it requires nothing.
 
 ```bash
 # Clone the repository
@@ -46,7 +60,7 @@ A browser-based version — **no download, no install**. Pick your state and fil
 **`lookup-state-law.ts`** (Quick Reference) ⚡
 - Instant state statute lookup
 - Shows correct legal citations for your state
-- No installation needed - just run it
+- No dependencies — one command to run (requires Bun, see Quick Start)
 - Usage: `bun lookup-state-law.ts <STATE_CODE>`
 
 **`generate-flock-request.ts`** (Interactive Generator) 🔒

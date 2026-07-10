@@ -177,7 +177,7 @@ const args = process.argv.slice(2);
 
 if (args.length === 0) {
   console.log("╔══════════════════════════════════════════════════════════════╗");
-  console.log("║  State Public Records Law Quick Reference                   ║");
+  console.log("║  State Public Records Law Quick Reference                    ║");
   console.log("╚══════════════════════════════════════════════════════════════╝\n");
   console.log("Usage: bun lookup-state-law.ts <STATE_CODE>\n");
   console.log("Example: bun lookup-state-law.ts CO\n");
@@ -231,7 +231,7 @@ if (!STATE_LAWS[stateCode as keyof typeof STATE_LAWS]) {
 const law = STATE_LAWS[stateCode as keyof typeof STATE_LAWS];
 
 console.log("\n╔══════════════════════════════════════════════════════════════╗");
-console.log(`║  ${law.name.padEnd(58)} ║`);
+console.log(`║  ${law.name.padEnd(60)}║`);
 console.log("╚══════════════════════════════════════════════════════════════╝\n");
 
 console.log("📖 Official Law Name:");
