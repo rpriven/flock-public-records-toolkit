@@ -63,10 +63,6 @@ A browser-based version — **no download, no install**. Pick your state and fil
 - State-by-state legal reference guide
 - Best practices and tips for success
 
-**`foia_req_raw.md`**
-- Original template with errors (kept for reference)
-- ⚠️ DO NOT USE - contains legal errors
-
 ---
 
 ## 💡 Why We Built This
@@ -319,5 +315,5 @@ This project **complements** Louis Rossmann's Denver-specific investigation into
 
 ---
 
-**Last Updated**: November 2025
-**Maintained by**: Denver Flock Opposition community
+**Last Updated**: July 2026
+**Maintained by**: [rpriven](https://github.com/rpriven)

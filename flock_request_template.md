@@ -53,37 +53,48 @@ Sincerely,
 
 ---
 
-## State-Specific Response Time References
+## State-Specific Legal Citations & Response Times
 
-**No specific deadline (respond "promptly"):**
-- Arizona (A.R.S. §39-121)
-- Others as applicable
+All 20 supported states, with the law name and statute to cite in your request. Grouped by response deadline:
 
-**3 days or less:**
-- Arkansas: 3 days
-- Vermont: 2 days
-- Several others: 3 days
+**No specific deadline (must respond "promptly" or within a "reasonable time"):**
+- Arizona — Arizona Public Records Law (A.R.S. §39-121 et seq.)
+- Florida — Florida Public Records Law (Fla. Stat. §119.01 et seq.)
+- North Carolina — North Carolina Public Records Law (N.C. Gen. Stat. §132-1 et seq.)
+- Ohio — Ohio Public Records Act (Ohio Rev. Code §149.43 et seq.)
+- Oregon — Oregon Public Records Law (ORS 192.311 et seq.)
 
-**5 days:**
-- California: 10 days
-- Illinois: 5 days
-- Pennsylvania: 5 days
-- Virginia: 5 days
-- West Virginia: 5 days
+**3 business days:**
+- Georgia — Georgia Open Records Act (O.C.G.A. §50-18-70 et seq.)
+- New Mexico — Inspection of Public Records Act (NMSA 1978, §14-2-1 et seq.)
+
+**5 business days:**
+- Illinois — Illinois FOIA (5 ILCS 140/1 et seq.)
+- Nevada — Nevada Public Records Law (Nev. Rev. Stat. §239.010 et seq.)
+- New York — Freedom of Information Law (FOIL) (N.Y. Pub. Off. Law §87 et seq.) — acknowledgment within 5 days
+- Pennsylvania — Right-to-Know Law (65 Pa.C.S. §67.101 et seq.)
+- Virginia — Virginia FOIA (Va. Code §2.2-3700 et seq.)
+- Washington — Washington Public Records Act (RCW 42.56 et seq.)
+
+**7 business days:**
+- Tennessee — Tennessee Public Records Act (Tenn. Code Ann. §10-7-503 et seq.)
 
 **10 days:**
-- Colorado: 10 business days (C.R.S. §24-72-203)
-- Iowa: 10-20 days
-- South Carolina: 10 days (20 if >24 months old)
+- California — California Public Records Act (Cal. Gov. Code §7920.000 et seq.)
+- Colorado — Colorado Open Records Act (CORA) (C.R.S. §24-72-201 et seq.) — 10 business days
+- Massachusetts — Massachusetts Public Records Law (Mass. Gen. Laws ch. 66, §10 et seq.) — 10 business days
+- Texas — Texas Public Information Act (Tex. Gov't Code §552.001 et seq.) — 10 business days
 
-**15 days:**
-- Delaware: 15 days
-- DC: 15 days
-- Michigan: 15 days
+**15 business days:**
+- Michigan — Michigan FOIA (MCL 15.231 et seq.)
 
-**20 days:**
-- Federal FOIA: 20 days
-- Maryland: 30 days
+**30 days:**
+- Maryland — Maryland Public Information Act (Md. Code Ann., Gen. Prov. §4-101 et seq.)
+
+**Federal agencies only:**
+- Federal FOIA (5 U.S.C. §552): 20 business days — do NOT cite for state/local requests
+
+**Your state not listed?** Run `bun lookup-state-law.ts --all` for details, or look up your state's public records law at https://www.nfoic.org/ and use the generic template language above.
 
 ---
 

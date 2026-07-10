@@ -259,6 +259,6 @@ console.log(`   "I request that you respond ${law.responseTime}."`);
 console.log();
 
 console.log("🔗 Related Tools:");
-console.log("   • Full request generator: bun generate-flock-request-secure.ts");
+console.log("   • Full request generator: bun generate-flock-request.ts");
 console.log("   • Template file: flock_request_template.md");
 console.log("   • All states: bun lookup-state-law.ts --all\n");
