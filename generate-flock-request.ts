@@ -108,7 +108,7 @@ async function main() {
   console.log("Agency Information");
   console.log("─────────────────────────────────────────────────────────────");
 
-  const agencyName = sanitizeText(await prompt("Agency name (e.g., Denver Police Department): "), 200);
+  const agencyName = sanitizeText(await prompt("Agency name (e.g., Springfield Police Department): "), 200);
   if (!agencyName) {
     console.error("❌ Error: Agency name is required");
     process.exit(1);

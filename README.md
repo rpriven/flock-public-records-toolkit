@@ -163,7 +163,7 @@ Currently supports **20 states** with accurate legal citations:
 - **Meeting minutes** - Required to be public in most states
 - **Financial records** - How public money is spent
 - **Training materials** - Usually not exempt
-- **Network sharing & audit records** - Who outside your city can search your cameras, and who has (often produced with redactions — records like these exposed Denver's federal-sharing pilot)
+- **Network sharing & audit records** - Who outside your city can search your cameras, and who has (often produced with redactions; these are the records that have exposed undisclosed federal data-sharing in more than one city)
 
 ### ⚠️ May Require Legal Challenge
 
@@ -178,11 +178,9 @@ Courts are increasingly ruling that Flock data is subject to public records laws
 - **Washington 2025**: Judge ordered police to release surveillance data
 - **General principle**: Public records law trumps vendor contracts
 
-### 💥 Proof of Impact: Denver 2026
+### 💥 Records Requests Change Outcomes
 
-Public records requests don't just get documents — they change outcomes. In Colorado, journalists used records requests to uncover that Flock had given U.S. Border Patrol access to local camera data through a previously undisclosed pilot program — after the company publicly denied having federal contracts. The fallout: city council support collapsed, the City Auditor refused to countersign the contract, and in February 2026 Denver dropped Flock entirely ([9NEWS](https://www.9news.com/article/news/local/denver-removing-flock-cameras-new-axon-contract/73-640b5af3-7c87-4fea-8aa1-2510ad3257b8)).
-
-The records that exposed it are exactly the kind this toolkit's templates request — data-sharing and external-access records. Ask your town the same question.
+Public records requests don't just get documents. Across the country, requests for Flock audit logs and data-sharing records have revealed out-of-state and federal searches of local camera data that agencies had not disclosed, and in several cities that disclosure is what ended the contract. The records that did it are exactly the kind this toolkit's templates request: data-sharing and external-access records. Ask your town the same question.
 
 ---
 
@@ -342,20 +340,11 @@ This is free and open-source software. You are free to use, modify, and distribu
 
 ## 🙏 Acknowledgments
 
-- **Denver residents and local privacy advocates** - Were organizing against the city's Flock contract before it drew national attention
-- **Louis Rossmann and Repair.org** - Their Denver investigation and guide helped bring it to national attention (and to this project's author)
+- The residents, local journalists, and advocacy groups in cities across the country whose records requests showed what these systems actually do
 - Original template from Clippies Zulip community
 - Legal research from state government websites and NFOIC
-- Inspired by MuckRock, ACLU, and other transparency advocates
+- Inspired by MuckRock, EFF, ACLU, and other transparency advocates
 - Built with Bun and TypeScript
-
-### Relationship to the Denver Opposition
-
-This project **complements** the work done in Denver against the controversial $498,500 Flock contract, by local residents and advocates and by Louis Rossmann's investigation and guide. That work goes deep on one city; our tools provide broad multi-state public records access for any jurisdiction.
-
-- **Rossmann's guide** = Deep Denver investigation → [View Guide](https://consumerrights.wiki/w/Special_event_page:Forced_installation_of_Flock_cameras_in_Denver,_Colorado)
-- **Our tools** = Multi-state transparency toolkit
-- **Together** = Nationwide movement for surveillance accountability
 
 ---
 

@@ -37,8 +37,8 @@ describe('state law data', () => {
 
 describe('validators', () => {
   test('zip', () => {
-    expect(isValidZip('80002')).toBe(true);
-    expect(isValidZip(' 80002-1234 ')).toBe(true);
+    expect(isValidZip('12345')).toBe(true);
+    expect(isValidZip(' 12345-6789 ')).toBe(true);
     expect(isValidZip('8000')).toBe(false);
     expect(isValidZip('abcde')).toBe(false);
   });
@@ -56,7 +56,7 @@ describe('validators', () => {
     expect(sanitizeText('x'.repeat(50), 10)).toHaveLength(10);
   });
   test('filename is filesystem safe', () => {
-    expect(sanitizeFilename('Denver Police Dept. / Records')).toBe('Denver_Police_Dept_Records');
+    expect(sanitizeFilename('Springfield Police Dept. / Records')).toBe('Springfield_Police_Dept_Records');
     expect(sanitizeFilename('../../etc/passwd')).toBe('etcpasswd');
   });
   test('license plate', () => {
@@ -89,17 +89,17 @@ describe('letter', () => {
     agencyName: 'Test Police Department',
     agencyAddress: '100 Main St',
     city: 'Testville',
-    state: 'Colorado',
-    stateCode: 'CO',
-    zip: '80001',
-    lawName: STATE_LAWS.CO.lawName,
-    statute: STATE_LAWS.CO.statute,
-    responseTime: STATE_LAWS.CO.responseTime,
+    state: 'Illinois',
+    stateCode: 'IL',
+    zip: '62701',
+    lawName: STATE_LAWS.IL.lawName,
+    statute: STATE_LAWS.IL.statute,
+    responseTime: STATE_LAWS.IL.responseTime,
     yourName: 'Jane Doe',
     yourAddress: '5 Elm St',
     yourCity: 'Testtown',
-    yourState: 'Colorado',
-    yourZip: '80002',
+    yourState: 'Illinois',
+    yourZip: '62702',
     yourEmail: 'jane@example.com',
     yourPhone: '',
     vehicleInfo: '',
@@ -108,8 +108,8 @@ describe('letter', () => {
 
   test('cites the chosen state law and lists twelve items', () => {
     const text = generateLetter(base);
-    expect(text).toContain('Colorado Open Records Act (CORA) (C.R.S. §24-72-201 et seq.)');
-    expect(text).toContain('within 10 business days as required by C.R.S. §24-72-203(3)(b)');
+    expect(text).toContain('Illinois Freedom of Information Act (FOIA) (5 ILCS 140/1 et seq.)');
+    expect(text).toContain('within 5 business days as required by 5 ILCS 140/3(d)');
     for (let i = 1; i <= 12; i++) expect(text).toMatch(new RegExp(`^${i}\\. `, 'm'));
     expect(text).not.toContain('13. Vehicle');
     expect(text).not.toContain('TIME-SENSITIVE');
@@ -118,11 +118,11 @@ describe('letter', () => {
   });
 
   test('structured parts and the plain text agree', () => {
-    const params = { ...base, expedited: true, yourPhone: '303-555-0100', vehicleInfo: buildVehicleInfo('ABC1234', '2020 Honda Civic, blue', '') };
+    const params = { ...base, expedited: true, yourPhone: '555-0100', vehicleInfo: buildVehicleInfo('ABC1234', '2020 Honda Civic, blue', '') };
     const p = letterParts(params);
     expect(p.items).toHaveLength(13);
     expect(p.items[12].label).toBe('Vehicle-Specific Request');
-    expect(p.requesterBlock).toEqual(['Jane Doe', '5 Elm St', 'Testtown, Colorado 80002', 'Email: jane@example.com', 'Phone: 303-555-0100']);
+    expect(p.requesterBlock).toEqual(['Jane Doe', '5 Elm St', 'Testtown, Illinois 62702', 'Email: jane@example.com', 'Phone: 555-0100']);
     expect(p.expedited).toBeTruthy();
     const text = generateLetter(params);
     for (const item of p.items) expect(text).toContain(`${item.n}. ${item.label}: ${item.text}`);
@@ -139,11 +139,11 @@ describe('letter', () => {
     const text = generateLetter({
       ...base,
       expedited: true,
-      yourPhone: '303-555-0100',
+      yourPhone: '555-0100',
       vehicleInfo: buildVehicleInfo('ABC1234', '2020 Honda Civic, blue', ''),
     });
     expect(text).toContain('TIME-SENSITIVE REQUEST');
-    expect(text).toContain('Phone: 303-555-0100');
+    expect(text).toContain('Phone: 555-0100');
     expect(text).toContain(`13. Vehicle-Specific Request: All images, footage, and associated data for license plate ABC1234 (2020 Honda Civic, blue) for the period of ${DEFAULT_DATE_RANGE}.`);
   });
 });
