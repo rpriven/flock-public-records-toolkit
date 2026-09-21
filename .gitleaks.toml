@@ -1,0 +1,17 @@
+# gitleaks configuration for this repository.
+#
+# The built page (index.html) embeds two subset WOFF2 fonts as base64 data
+# URIs. The tail of a base64 blob can look exactly like a WireGuard private
+# key (44 chars ending in "="), which trips the default rule. Those lines are
+# font bytes, not secrets; everything else is scanned with the default rules.
+
+title = "flock-public-records-toolkit"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Embedded Latin Modern font data in the built page"
+regexTarget = "line"
+regexes = ['''data:font/woff2;base64,[A-Za-z0-9+/=]+\)''']
+paths = ['''^web/fonts/.*\.woff2$''']

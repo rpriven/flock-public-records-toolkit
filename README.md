@@ -14,7 +14,7 @@ Government surveillance systems should be transparent and accountable to the com
 
 **→ [Open the generator](https://rpriven.github.io/flock-public-records-toolkit/)**
 
-Pick your state, fill in the agency and your contact details, and it builds a records request with the correct legal citation and response deadline, ready to copy, download as `.txt`, or print to PDF.
+Pick your state, fill in the agency and your contact details, and it builds a records request with the correct legal citation and response deadline. **Print / Save as PDF** gives you a mail-ready letter typeset in Latin Modern (the LaTeX typeface, embedded in the page); **Copy** and **Download .txt** give the same letter as plain text for online portals and email.
 
 **Runs entirely in your browser.** Nothing you type is sent, stored, or logged anywhere: no trackers, no cookies, no network requests, no local storage. It is one self-contained HTML file with a strict Content-Security-Policy, so you can also download it and use it offline: open [`index.html`](index.html) in this repo, click **Download raw file**, then double-click the saved file.
 
@@ -66,7 +66,8 @@ If you're not comfortable with command-line tools:
 **`index.html`** (Browser Generator) 🌐
 - The same request generator as a single, self-contained page
 - No dependencies, no network requests, no storage; works from a local file
-- Built by `bun build-web.ts` from `web/index.template.html`, `web/app.ts`, `letter.ts` and `state-laws.json`. Edit those, not `index.html`.
+- Print / Save as PDF produces a typeset, mail-ready letter (US Letter, 1" margins, Latin Modern Roman, page numbers); the browser's own PDF engine does the work, so nothing leaves your machine
+- Built by `bun build-web.ts` from `web/index.template.html`, `web/app.ts`, `letter.ts`, `state-laws.json` and the subset fonts in `web/fonts/` (Latin Modern, GUST Font License). Edit those, not `index.html`.
 
 ### Shared Core
 

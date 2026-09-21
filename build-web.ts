@@ -44,6 +44,16 @@ export async function buildHtml(): Promise<string> {
 
   let html = await Bun.file(TEMPLATE).text();
 
+  // Embed the subset Latin Modern Roman fonts as data: URIs (GUST Font License).
+  for (const [placeholder, file] of [
+    ['__FONT_REGULAR_B64__', 'lmroman10-regular.woff2'],
+    ['__FONT_BOLD_B64__', 'lmroman10-bold.woff2'],
+  ] as const) {
+    const bytes = await Bun.file(join(ROOT, 'web', 'fonts', file)).arrayBuffer();
+    if (!html.includes(placeholder)) throw new Error(`Template is missing ${placeholder}`);
+    html = html.replace(placeholder, Buffer.from(bytes).toString('base64'));
+  }
+
   const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/);
   if (!styleMatch) throw new Error('Template has no <style> block');
   const styleHash = `sha256-${sha256(styleMatch[1])}`;
@@ -57,7 +67,8 @@ export async function buildHtml(): Promise<string> {
     .replace('__SCRIPT_HASH__', scriptHash)
     .replace('__STYLE_HASH__', styleHash);
 
-  if (html.includes('__SCRIPT_HASH__') || html.includes('__STYLE_HASH__')) {
+  const leftover = ['__SCRIPT_HASH__', '__STYLE_HASH__', '__FONT_REGULAR_B64__', '__FONT_BOLD_B64__'].filter((p) => html.includes(p));
+  if (leftover.length) {
     throw new Error('CSP placeholders were not all replaced');
   }
   return html;

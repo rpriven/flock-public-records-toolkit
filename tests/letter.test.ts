@@ -6,6 +6,7 @@ import {
   addBusinessDays,
   buildVehicleInfo,
   generateLetter,
+  letterParts,
   isValidEmail,
   isValidZip,
   normalizeStateCode,
@@ -114,6 +115,24 @@ describe('letter', () => {
     expect(text).not.toContain('TIME-SENSITIVE');
     expect(text).not.toContain('Phone:');
     expect(text.trimEnd().endsWith('Jane Doe')).toBe(true);
+  });
+
+  test('structured parts and the plain text agree', () => {
+    const params = { ...base, expedited: true, yourPhone: '303-555-0100', vehicleInfo: buildVehicleInfo('ABC1234', '2020 Honda Civic, blue', '') };
+    const p = letterParts(params);
+    expect(p.items).toHaveLength(13);
+    expect(p.items[12].label).toBe('Vehicle-Specific Request');
+    expect(p.requesterBlock).toEqual(['Jane Doe', '5 Elm St', 'Testtown, Colorado 80002', 'Email: jane@example.com', 'Phone: 303-555-0100']);
+    expect(p.expedited).toBeTruthy();
+    const text = generateLetter(params);
+    for (const item of p.items) expect(text).toContain(`${item.n}. ${item.label}: ${item.text}`);
+    expect(text).toContain(`⚠️ TIME-SENSITIVE REQUEST: ${p.expedited}`);
+  });
+
+  test('a custom vehicleInfo that is not an item is appended verbatim', () => {
+    const custom = '\n\nAdditionally: please include the camera map.';
+    const text = generateLetter({ ...base, vehicleInfo: custom });
+    expect(text).toContain('federal sharing settings' + custom + '\n\nPlease provide records');
   });
 
   test('expedited, phone and vehicle sections appear when set', () => {

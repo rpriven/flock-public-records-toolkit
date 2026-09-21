@@ -51,5 +51,17 @@ describe('index.html', () => {
     const h = (s: string) => `sha256-${createHash('sha256').update(s, 'utf8').digest('base64')}`;
     expect(csp).toContain(`script-src '${h(script!)}'`);
     expect(csp).toContain(`style-src '${h(style!)}'`);
+    expect(csp).toContain('font-src data:');
+  });
+
+  test('embeds Latin Modern Roman regular and bold as data URIs', () => {
+    const faces = committed.match(/@font-face\s*{[^}]*}/g) ?? [];
+    expect(faces).toHaveLength(2);
+    for (const face of faces) {
+      expect(face).toContain('"Latin Modern Roman"');
+      expect(face).toMatch(/src: url\(data:font\/woff2;base64,[A-Za-z0-9+/=]{1000,}\) format\("woff2"\)/);
+    }
+    expect(committed).toContain('font-weight: 400');
+    expect(committed).toContain('font-weight: 700');
   });
 });

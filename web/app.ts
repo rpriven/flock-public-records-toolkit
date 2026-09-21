@@ -2,8 +2,9 @@
  * Browser app for the Flock Safety public records request generator.
  *
  * Bundled by build-web.ts into index.html. Uses only DOM APIs: no fetch,
- * no storage, no cookies. All letter logic lives in ../letter.ts so the
- * browser and the CLI produce the same text.
+ * no storage, no cookies. All letter content lives in ../letter.ts so the
+ * browser and the CLI produce the same text; the typeset view on screen and
+ * in print is rendered from the same structured parts.
  */
 
 import {
@@ -16,11 +17,14 @@ import {
   buildVehicleInfo,
   formatLetterDate,
   generateLetter,
+  letterParts,
   isValidEmail,
   isValidZip,
   sanitizeFilename,
   sanitizeLicensePlate,
   sanitizeText,
+  type LetterParams,
+  type LetterParts,
 } from '../letter';
 
 function $<T extends HTMLElement = HTMLElement>(id: string): T {
@@ -139,7 +143,7 @@ function validate(): boolean {
 // Letter generation
 // ---------------------------------------------------------------------------
 
-function buildLetter(): string {
+function collectParams(): LetterParams {
   const code = stateSelect.value;
   const law = STATE_LAWS[code];
   const agencyName = sanitizeText(input('agencyName').value, 200);
@@ -152,7 +156,7 @@ function buildLetter(): string {
     vehicleInfo = buildVehicleInfo(plate, desc, range);
   }
 
-  return generateLetter({
+  return {
     date: formatLetterDate(new Date()),
     agencyName,
     agencyAddress: sanitizeText(input('agencyAddress').value, 200),
@@ -172,14 +176,91 @@ function buildLetter(): string {
     yourPhone: sanitizeText(input('yourPhone').value, 20),
     vehicleInfo,
     expedited: input('expedited').checked,
-  });
+  };
+}
+
+// --- Typeset view (screen preview and print) -------------------------------
+
+function el(tag: string, className?: string, text?: string): HTMLElement {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function lines(container: HTMLElement, items: string[]): void {
+  for (const line of items) {
+    if (!line) continue;
+    const div = el('div', undefined, line);
+    container.appendChild(div);
+  }
+}
+
+function renderTypeset(p: LetterParts): void {
+  const root = $('typeset');
+  root.replaceChildren();
+
+  // Sender block, top right, as in the LaTeX letter class.
+  const from = el('div', 'tl-from');
+  const fromLines = p.requesterBlock.filter((l) => !l.startsWith('Email: ') && !l.startsWith('Phone: '));
+  const contact = p.requesterBlock.filter((l) => l.startsWith('Email: ') || l.startsWith('Phone: ')).map((l) => l.replace(/^(Email|Phone): /, ''));
+  const nameEl = el('div', 'tl-name', fromLines[0]);
+  from.appendChild(nameEl);
+  lines(from, fromLines.slice(1));
+  lines(from, contact);
+  root.appendChild(from);
+
+  root.appendChild(el('div', 'tl-date', p.date));
+
+  const to = el('div', 'tl-to');
+  lines(to, p.agencyBlock);
+  root.appendChild(to);
+
+  const re = el('p', 'tl-re');
+  re.appendChild(el('b', undefined, 'RE: '));
+  re.appendChild(document.createTextNode(p.subject));
+  root.appendChild(re);
+
+  root.appendChild(el('p', undefined, p.salutation));
+  root.appendChild(el('p', undefined, p.intro));
+  root.appendChild(el('p', undefined, p.lead));
+
+  const ol = el('ol', 'tl-items');
+  for (const item of p.items) {
+    const li = el('li');
+    li.appendChild(el('b', undefined, `${item.label}: `));
+    li.appendChild(document.createTextNode(item.text));
+    ol.appendChild(li);
+  }
+  root.appendChild(ol);
+
+  if (p.expedited) {
+    const urgent = el('p', 'tl-urgent');
+    urgent.appendChild(el('b', undefined, 'Time-sensitive request: '));
+    urgent.appendChild(document.createTextNode(p.expedited));
+    root.appendChild(urgent);
+  }
+
+  root.appendChild(el('p', undefined, p.format));
+  root.appendChild(el('p', undefined, p.respond));
+  root.appendChild(el('p', undefined, p.sendToLead));
+
+  const addr = el('div', 'tl-addr');
+  lines(addr, p.requesterBlock);
+  root.appendChild(addr);
+
+  root.appendChild(el('p', undefined, p.thanks));
+  root.appendChild(el('p', 'tl-close', p.closing));
+  root.appendChild(el('div', 'tl-sig', p.signature));
 }
 
 let shown = false;
 
 function showLetter(): void {
-  const text = buildLetter();
-  $('letter').textContent = text;
+  const params = collectParams();
+  $('letter').textContent = generateLetter(params);
+  renderTypeset(letterParts(params));
+
   const law = STATE_LAWS[stateSelect.value];
   const next = $('next-deadline');
   if (law.specificTimeframe) {
@@ -237,11 +318,11 @@ $('copy').addEventListener('click', async () => {
   const text = letterText();
   try {
     await navigator.clipboard.writeText(text);
-    setStatus('Copied to clipboard.');
+    setStatus('Copied to clipboard as plain text.');
   } catch {
     // Older browsers, or file:// pages without clipboard permission.
     const range = document.createRange();
-    range.selectNodeContents($('letter'));
+    range.selectNodeContents($('typeset'));
     const sel = window.getSelection();
     sel?.removeAllRanges();
     sel?.addRange(range);
