@@ -1,8 +1,11 @@
 # gitleaks configuration for this repository.
 #
 # The built page (index.html) embeds two subset WOFF2 fonts as base64 data
-# URIs. The tail of a base64 blob can look exactly like a WireGuard private
-# key (44 chars ending in "="). Those lines are font bytes, not secrets.
+# URIs, and its Content-Security-Policy carries sha256 hashes of the inline
+# script and style. The tail of a base64 blob and a base64 sha256 both look
+# exactly like a WireGuard private key (44 chars ending in "=") whenever their
+# entropy is high enough. Those lines are font bytes and content hashes, not
+# secrets.
 #
 # The default rule set is extended with a strict WireGuard rule (bare base64
 # key shape, keyword-gated), so the allowlist below is actually exercised;
@@ -21,7 +24,10 @@ keywords = ["wireguard", "private", "wg"]
 entropy = 4.5
 
 [allowlist]
-description = "Embedded Latin Modern font data in the built page"
+description = "Embedded font data and CSP content hashes in the built page"
 regexTarget = "line"
-regexes = ['''data:font/woff2;base64,[A-Za-z0-9+/=]+\)''']
+regexes = [
+  '''data:font/woff2;base64,[A-Za-z0-9+/=]+\)''',
+  '''http-equiv="Content-Security-Policy" content="[^"]*'sha256-[A-Za-z0-9+/]{43}='[^"]*"''',
+]
 paths = ['''^web/fonts/.*\.woff2$''']

@@ -183,23 +183,25 @@ footer a { color: inherit; }
   -webkit-hyphens: auto;
   max-width: 8.5in;
   margin: 0 auto;
-  padding: 1in;
+  padding: 0.6in 0.75in;
   border: 1px solid var(--line);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
 }
 @media (max-width: 700px) { #typeset { padding: 24px 20px; font-size: 10.5pt; } }
 #typeset p { margin: 0 0 0.8em; }
 #typeset b { font-weight: 700; }
-.tl-from { text-align: right; line-height: 1.3; margin-bottom: 1.6em; }
-.tl-from .tl-name { font-weight: 700; }
+.tl-from { text-align: right; line-height: 1.3; font-size: 10pt; padding-bottom: 0.7em; margin-bottom: 1.4em; border-bottom: 0.6pt solid #333; }
+.tl-from .tl-name { font-weight: 700; font-size: 12.5pt; font-variant: small-caps; letter-spacing: 0.05em; margin-bottom: 0.15em; }
 .tl-date { text-align: right; margin-bottom: 1.6em; }
 .tl-to { text-align: left; line-height: 1.3; margin-bottom: 1.2em; }
 .tl-re { margin-bottom: 1em; }
+.tl-re b { font-variant: small-caps; letter-spacing: 0.04em; }
 .tl-items { margin: 0 0 0.8em 1.6em; padding: 0; }
 .tl-items li { margin-bottom: 0.45em; padding-left: 0.2em; }
 .tl-addr { text-align: left; line-height: 1.3; margin: 0 0 0.8em 2em; }
 .tl-close { margin-top: 1.2em; }
-.tl-sig { margin-top: 2.8em; }
+.tl-sig { margin-top: 2.4em; }
+.tl-signoff { break-inside: avoid; page-break-inside: avoid; }
 .output-note { color: var(--muted); font-size: 0.88rem; margin: 0 0 12px; }
 
 @media print {
@@ -212,9 +214,10 @@ footer a { color: inherit; }
   .wrap { max-width: none; padding: 0; margin: 0; }
   header, .promise, form, section.step, .actions, .status, .next, .output-note, footer, #output h2, #letter { display: none !important; }
   #output { display: block !important; border: 0; padding: 0; margin: 0; background: #fff; }
-  #typeset { border: 0; box-shadow: none; padding: 0; margin: 0; max-width: none; }
-  .tl-items li { break-inside: avoid; }
-  .tl-close, .tl-sig { break-inside: avoid; }
+  #typeset { border: 0; box-shadow: none; padding: 0; margin: 0; max-width: none; font-size: 11pt; line-height: 1.33; }
+  .tl-items li { break-inside: avoid; margin-bottom: 0.35em; }
+  .tl-from { margin-bottom: 1.1em; }
+  .tl-date, .tl-to { margin-bottom: 1.1em; }
 }
 </style>
 </head>
@@ -350,11 +353,11 @@ footer a { color: inherit; }
   <section class="step" id="output" aria-live="polite">
     <h2><span class="num">5</span> Your request</h2>
     <div class="actions">
-      <button type="button" id="print">Print / save as PDF</button>
-      <button type="button" id="copy" class="secondary">Copy as plain text</button>
+      <button type="button" id="copy">Copy as plain text</button>
       <button type="button" id="download" class="secondary">Download .txt</button>
+      <button type="button" id="print" class="secondary">Print / save as PDF</button>
     </div>
-    <p class="output-note">Print gives you the letter below as a mail-ready PDF (choose "Save as PDF" as the printer). Copy and the .txt download give the same letter as plain text for online portals and email.</p>
+    <p class="output-note">Copy and the .txt download give the letter as plain text for online portals and email. Print gives you the typeset letter below as a mail-ready PDF on US Letter (8.5 × 11 in) paper; choose "Save as PDF" as the printer. The preview flows as one sheet; the PDF breaks into pages.</p>
     <p class="status" id="status"></p>
     <div id="typeset" aria-label="Your request letter, formatted for printing"></div>
     <pre id="letter" hidden></pre>

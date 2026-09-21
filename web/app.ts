@@ -250,8 +250,11 @@ function renderTypeset(p: LetterParts): void {
   root.appendChild(addr);
 
   root.appendChild(el('p', undefined, p.thanks));
-  root.appendChild(el('p', 'tl-close', p.closing));
-  root.appendChild(el('div', 'tl-sig', p.signature));
+  // Closing and signature travel together so a page break can't orphan the name.
+  const signoff = el('div', 'tl-signoff');
+  signoff.appendChild(el('p', 'tl-close', p.closing));
+  signoff.appendChild(el('div', 'tl-sig', p.signature));
+  root.appendChild(signoff);
 }
 
 let shown = false;
