@@ -21,9 +21,10 @@ describe('index.html', () => {
 
   test('references no external resources and no storage', () => {
     const forbidden = [
-      /<script[^>]+src=/i,
+      /\ssrc=/i,
       /<link\s/i,
       /@import/i,
+      /url\(\s*['"]?https?:/i,
       /\bfetch\s*\(/,
       /XMLHttpRequest/,
       /sendBeacon/,
