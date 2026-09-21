@@ -342,15 +342,16 @@ This is free and open-source software. You are free to use, modify, and distribu
 
 ## 🙏 Acknowledgments
 
-- **Louis Rossmann and Repair.org** - Started the Flock opposition movement with Denver investigation
+- **Denver residents and local privacy advocates** - Were organizing against the city's Flock contract before it drew national attention
+- **Louis Rossmann and Repair.org** - Their Denver investigation and guide carried the story to a national audience (and to this project's author)
 - Original template from Clippies Zulip community
 - Legal research from state government websites and NFOIC
 - Inspired by MuckRock, ACLU, and other transparency advocates
 - Built with Bun and TypeScript
 
-### Relationship to Louis Rossmann's Denver Investigation
+### Relationship to the Denver Opposition
 
-This project **complements** Louis Rossmann's Denver-specific investigation into the controversial $498,500 Flock contract. His guide focuses on deep investigative journalism for Denver, while our tools provide broad multi-state public records access for any jurisdiction.
+This project **complements** the work done in Denver against the controversial $498,500 Flock contract, by local residents and advocates and by Louis Rossmann's investigation and guide. That work goes deep on one city; our tools provide broad multi-state public records access for any jurisdiction.
 
 - **Rossmann's guide** = Deep Denver investigation → [View Guide](https://consumerrights.wiki/w/Special_event_page:Forced_installation_of_Flock_cameras_in_Denver,_Colorado)
 - **Our tools** = Multi-state transparency toolkit
