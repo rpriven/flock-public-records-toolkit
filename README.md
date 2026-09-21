@@ -343,7 +343,7 @@ This is free and open-source software. You are free to use, modify, and distribu
 ## 🙏 Acknowledgments
 
 - **Denver residents and local privacy advocates** - Were organizing against the city's Flock contract before it drew national attention
-- **Louis Rossmann and Repair.org** - Their Denver investigation and guide carried the story to a national audience (and to this project's author)
+- **Louis Rossmann and Repair.org** - Their Denver investigation and guide helped bring it to national attention (and to this project's author)
 - Original template from Clippies Zulip community
 - Legal research from state government websites and NFOIC
 - Inspired by MuckRock, ACLU, and other transparency advocates
