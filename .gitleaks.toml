@@ -2,13 +2,23 @@
 #
 # The built page (index.html) embeds two subset WOFF2 fonts as base64 data
 # URIs. The tail of a base64 blob can look exactly like a WireGuard private
-# key (44 chars ending in "="), which trips the default rule. Those lines are
-# font bytes, not secrets; everything else is scanned with the default rules.
+# key (44 chars ending in "="). Those lines are font bytes, not secrets.
+#
+# The default rule set is extended with a strict WireGuard rule (bare base64
+# key shape, keyword-gated), so the allowlist below is actually exercised;
+# everything outside the font data URI lines is still scanned by it.
 
 title = "flock-public-records-toolkit"
 
 [extend]
 useDefault = true
+
+[[rules]]
+id = "wireguard-private-key"
+description = "WireGuard Private Key"
+regex = '''[a-zA-Z0-9+/]{43}='''
+keywords = ["wireguard", "private", "wg"]
+entropy = 4.5
 
 [allowlist]
 description = "Embedded Latin Modern font data in the built page"
