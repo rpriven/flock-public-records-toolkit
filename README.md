@@ -1,5 +1,7 @@
 # Flock Safety Public Records Request Tools
 
+![A person holds up a glowing records request toward a pole-mounted license plate reader camera on a rainy night street](assets/hero.jpg)
+
 Tools to help citizens exercise their legal right to request public records about Flock Safety surveillance systems in their communities.
 
 ## 🎯 Purpose
@@ -7,6 +9,14 @@ Tools to help citizens exercise their legal right to request public records abou
 Government surveillance systems should be transparent and accountable to the communities they serve. This project makes it easier for citizens to request public information about Flock Safety automated license plate reader (ALPR) cameras using proper legal citations for each state.
 
 ## ⚡ Quick Start
+
+### Easiest: The Web App (no install)
+
+**→ [Open the generator](https://rpriven.github.io/flock-public-records-toolkit/)**
+
+Pick your state, fill in the agency and your contact details, and it builds a records request with the correct legal citation and response deadline, ready to copy, download as `.txt`, or print to PDF.
+
+**Runs entirely in your browser.** Nothing you type is sent, stored, or logged anywhere: no trackers, no cookies, no network requests, no local storage. It is one self-contained HTML file with a strict Content-Security-Policy, so you can also download it and use it offline: open [`index.html`](index.html) in this repo, click **Download raw file**, then double-click the saved file.
 
 ![Terminal output showing the Colorado public records law citation and ready-to-use request language](assets/demo.png)
 
@@ -47,13 +57,22 @@ If you're not comfortable with command-line tools:
 3. Copy the template and fill in your information
 4. Send to your local agency
 
-### Coming Soon: Web App
-
-A browser-based version — **no download, no install**. Pick your state and fill in the agency + your contact details; it builds a records request with the correct state legal citations and deadlines, ready to copy or download. **Runs entirely in your browser — your information is never sent, stored, or logged anywhere.** *(In progress.)*
-
 ---
 
 ## 📂 What's Included
+
+### Web App
+
+**`index.html`** (Browser Generator) 🌐
+- The same request generator as a single, self-contained page
+- No dependencies, no network requests, no storage; works from a local file
+- Built by `bun build-web.ts` from `web/index.template.html`, `web/app.ts`, `letter.ts` and `state-laws.json`. Edit those, not `index.html`.
+
+### Shared Core
+
+**`state-laws.json`** — the one place state law citations live. Both scripts and the web app read it.
+
+**`letter.ts`** — the letter text and input validators, shared by the CLI and the web app so they always produce the same request. `bun test` covers it.
 
 ### Interactive Scripts
 
@@ -231,19 +250,22 @@ If your state isn't supported, you can add it:
 
 1. Look up your state's public records law statute
 2. Find the mandated response timeframe
-3. Add entry to the `STATE_LAWS` object in `generate-flock-request.ts`
+3. Add an entry to `state-laws.json` (keep the keys alphabetical)
+4. Run `bun build-web.ts` to rebuild the web app, then `bun test`
+5. Add the state to the list in this README and in `flock_request_template.md`
 
 Example:
-```typescript
-XX: {
-  name: "Your State",
-  lawName: "Your State Public Records Act",
-  statute: "State Code §XXX.XXX et seq.",
-  responseTime: "within X days as required by State Code §XXX.XXX",
-  specificTimeframe: X, // or null if no specific deadline
-  notes: "Additional notes about your state's law"
+```json
+"XX": {
+  "name": "Your State",
+  "lawName": "Your State Public Records Act",
+  "statute": "State Code §XXX.XXX et seq.",
+  "responseTime": "within X days as required by State Code §XXX.XXX",
+  "specificTimeframe": X,
+  "notes": "Additional notes about your state's law"
 }
 ```
+Use `null` for `specificTimeframe` when the state has no fixed deadline.
 
 ### Report Issues
 
@@ -291,6 +313,7 @@ Filed a request using these tools? Let us know how it went! Success stories help
 - **Path traversal prevention** for file operations
 - **No data collection** - everything runs locally
 - **No network calls** - completely offline
+- **Web app locked down** - `default-src 'none'` Content-Security-Policy with hashed inline script and style, no storage APIs; `bun test` fails if either creeps in
 - **Open source** - audit the code yourself
 
 ### For Your Safety
@@ -340,5 +363,5 @@ This project **complements** Louis Rossmann's Denver-specific investigation into
 
 ---
 
-**Last Updated**: July 2026
+**Last Updated**: September 2026
 **Maintained by**: [rpriven](https://github.com/rpriven)

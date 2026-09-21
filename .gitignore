@@ -59,3 +59,12 @@ Thumbs.db
 SECURITY-AUDIT-SUMMARY.md
 RELATIONSHIP-TO-ROSSMANN-GUIDE.md
 ZULIP-*.md
+
+# Local session/working files (never publish)
+session-summary-*.md
+TODO.md
+HANDOFF.md
+.playwright-mcp/
+
+# LifeOS working document (private format)
+ISA.md
