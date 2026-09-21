@@ -1,4 +1,6 @@
-<!-- Source for assets/social-preview.jpg (GitHub social preview, 1280x640). Open beside hero.jpg at a 1280x640 viewport and screenshot. Text sits right, inside the vertical safe band (GitHub crops the card to about 2.6:1, cutting ~75px top and bottom). -->
+<!-- Source for two renders at a 1280x640 viewport beside hero.jpg:
+     assets/social-preview.jpg (default): text inside the vertical safe band, because GitHub crops the repo card to about 2.6:1 (~75px lost top and bottom).
+     assets/readme-banner.jpg (body.readme): text lower right, for the README where the full 2:1 image shows. -->
 <!DOCTYPE html><html><head><meta charset="utf-8"><title>card</title>
 <style>
   html,body{margin:0;background:#0d0716}
@@ -13,6 +15,11 @@
   .tag b{color:#e8e2d6;font-weight:normal}
   .chip{display:inline-block;margin:18px 0 0 8px;padding:6px 12px;border:1px solid rgba(242,165,74,.55);border-radius:5px;color:#f7d9a8;font-size:15px;letter-spacing:2px;background:rgba(13,7,22,.6)}
   .foot{position:absolute;left:88px;bottom:118px;color:#9a8fb5;font-size:15px;letter-spacing:1px}
+  body.readme .rule{top:246px}
+  body.readme .text{top:262px}
+  body.readme .tag{margin-top:18px}
+  body.readme .chip{margin-top:24px}
+  body.readme .foot{bottom:36px}
 </style></head><body>
 <div class="card">
   <div class="bg"></div><div class="shade"></div>
