@@ -1,6 +1,4 @@
-# Flock Safety Public Records Request Tools
-
-![A person holds up a glowing records request toward a pole-mounted license plate reader camera on a rainy night street](assets/hero.jpg)
+![Flock Safety Public Records Request Toolkit: ask your town what the cameras are doing. Correct citations and deadlines for 20 states; browser app, CLI, or copy-paste template. No install, nothing sent, open source.](assets/social-preview.jpg)
 
 Tools to help citizens exercise their legal right to request public records about Flock Safety surveillance systems in their communities.
 
