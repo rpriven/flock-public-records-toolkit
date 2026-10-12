@@ -286,6 +286,7 @@ Filed a request using these tools? Let us know how it went! Success stories help
 - **EFF Data Driven** - what 12M+ Flock search logs revealed: https://www.eff.org/pages/what-we-learned
 - **Have I Been Flocked** - Flock audit-log field reference: https://haveibeenflocked.com/about/audit-logs
 - **Rural Privacy Coalition** - request-filing guide: https://ruralprivacy.org/filing-public-info-requests
+- **FlockLocations** - Community map of Flock camera locations, labeled community confirmed or mapped, useful for finding which agencies to send requests to. Methodology: https://flocklocations.com/methodology
 - **DocumentCloud** - Document analysis and sharing
 - **National Freedom of Information Coalition**: https://www.nfoic.org/
 
